@@ -21,6 +21,7 @@
 // ignore_for_file: type=lint
 import 'package:firebase_core/firebase_core.dart' show FirebaseOptions;
 import 'package:flutter/foundation.dart' show defaultTargetPlatform, kIsWeb, TargetPlatform;
+import 'package:privacyidea_authenticator/firebase_options/mpgn_firebase_options.dart';
 // import 'package:privacyidea_authenticator/firebase_options/netknights_firebase_options.dart';
 
 // import 'netknights_firebase_options.dart';
@@ -38,6 +39,7 @@ import 'package:flutter/foundation.dart' show defaultTargetPlatform, kIsWeb, Tar
 class DefaultFirebaseOptions {
   static FirebaseOptions currentPlatformOf(String? app) => switch (app) {
         // 'netknights' => NetknightsFirebaseOptions.currentPlatform,
+        'mpgn' => MpgnFirebaseOptions.defaultCurrentPlatform,
         _ => defaultCurrentPlatform,
       };
   static FirebaseOptions get defaultCurrentPlatform {
@@ -75,11 +77,11 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'DEFAULT_FIREBASE_API_KEY',
-    appId: 'DEFAULT_FIREBASE_APP_ID',
-    messagingSenderId: 'DEFAULT_FIREBASE_MESSAGING_SENDER_ID',
-    projectId: 'DEFAULT_FIREBASE_PROJECT_ID',
-    storageBucket: 'DEFAULT_FIREBASE_STORAGE_BUCKET',
+    apiKey: 'AIzaSyDulxLMBKn6PkoMaonP9ksVnTjZRk1jb7I',
+    appId: '1:759244284492:android:eb74f8dfc7efcfb4314ae9',
+    messagingSenderId: '759244284492',
+    projectId: '759244284492',
+    storageBucket: 'mpgn-network.firebasestorage.app',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(

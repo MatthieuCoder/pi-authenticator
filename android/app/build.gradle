@@ -45,6 +45,11 @@ if (keystorePropertiesFileNetknightsDebug.exists()) {
     keystorePropertiesNetknightsDebug.load(new FileInputStream(keystorePropertiesFileNetknightsDebug))
 }
 
+def keystorePropertiesMpgn = new Properties()
+def keystorePropertiesFileMpgn = rootProject.file('app/src/mpgn/key.properties')
+if (keystorePropertiesFileMpgn.exists()) {
+    keystorePropertiesMpgn.load(new FileInputStream(keystorePropertiesFileMpgn))
+}
 
 android {
     namespace 'it.netknights.piauthenticator'
@@ -87,6 +92,12 @@ android {
             keyAlias keystorePropertiesNetknightsDebug['keyAlias']
             keyPassword keystorePropertiesNetknightsDebug['keyPassword']
         }
+        mpgn {
+            storeFile keystorePropertiesMpgn['storeFile'] ? file(keystorePropertiesMpgn['storeFile']) : null
+            storePassword keystorePropertiesMpgn['storePassword']
+            keyAlias keystorePropertiesMpgn['keyAlias']
+            keyPassword keystorePropertiesMpgn['keyPassword']
+        }
     }
 
     flavorDimensions "pi-authenticator"
@@ -103,6 +114,12 @@ android {
             applicationId "it.netknights.piauthenticator.debug"
             resValue "string", "app_name", "Internal - privacyIDEA Authenticator"
             signingConfig signingConfigs.netknights_debug
+        }
+        mpgn {
+            dimension "pi-authenticator"
+            applicationId "dev.mpgn.authenticator"
+            resValue "string", "app_name", "MPGN Authenticator"
+            signingConfig signingConfigs.mpgn
         }
     }
 

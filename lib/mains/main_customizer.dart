@@ -22,6 +22,8 @@ import 'package:easy_dynamic_theme/easy_dynamic_theme.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:gms_check/gms_check.dart';
+import 'package:privacyidea_authenticator/firebase_options/default_firebase_options.dart';
 
 import '../../../../../../../utils/customization/application_customization.dart';
 import '../l10n/app_localizations.dart';
@@ -44,6 +46,10 @@ import '../widgets/app_wrapper.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await GmsCheck().checkGmsAvailability();
+  appFirebaseOptions = DefaultFirebaseOptions.currentPlatformOf(
+    'mpgn',
+  );
   runApp(
     AppWrapper(
       child: CustomizationAuthenticator(
